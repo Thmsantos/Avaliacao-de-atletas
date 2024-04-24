@@ -1,0 +1,21 @@
+.box{
+    margin-left: 150px;
+    margin-right: 150px;
+    padding:50px;
+    display: flex;
+  justify-content: center;
+}
+
+.divButtons{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.textArea{
+height: 150px;
+}
+
+.select{
+  width: 80px;
+}

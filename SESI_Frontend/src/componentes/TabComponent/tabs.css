@@ -1,0 +1,12 @@
+/*para a mensagem de erro*/
+.hidden {
+  display: none;
+}
+
+.inline-errormsg {
+  color: red;
+  font-size: 12px;
+}
+.outlet {
+  margin-top: 15px;
+}

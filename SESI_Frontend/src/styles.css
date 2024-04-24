@@ -1,0 +1,51 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.Tabs {
+  width: 100%;
+  height: auto;
+  min-height: 100px;
+  margin: 0.5rem auto 1.5rem;
+  padding: 1rem 2rem;
+  color: #000;
+
+  @media (max-width: 769px) {
+    padding: 2rem 0;
+  }
+}
+
+ul.nav {
+  margin: 0 auto 0.75rem;
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+ul.nav li {
+  height: 50px;
+  width: 150px;
+  text-align: center;
+  padding: 0.5rem 40px;
+  transition: all 0.7s;
+  border-radius: 1px;
+  border: 1px solid rgba(117, 118, 117, 0.249);
+  margin: 1rem;
+}
+
+ul.nav li.active {
+  background: rgba(128, 128, 128, 0.562);
+  font-weight: bold;
+}
+
+div .box {
+  background: rgb(255, 255, 255);
+  padding: 1rem 1rem 8rem;
+  border: 1px solid #5c5c5c54;
+  border-radius: 0.5rem;
+}
