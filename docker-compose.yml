@@ -1,0 +1,79 @@
+version: "3.3"
+
+services:
+
+
+  database:
+    build:
+      context: ./SESI_Database
+      dockerfile: db.dockerfile
+
+    image: sesi_db:1.0.0
+
+    container_name: sesi_db
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+
+    volumes:
+      - ./SESI_Database:/var/lib/mysqld/
+
+    ports:
+      - "30306:3306"
+
+    expose:
+      - "30306"
+
+    networks:
+      - db_be
+
+  backend:
+    build:
+      context: ./SESI_Backend
+      dockerfile: be.dockerfile
+    
+    image: sesi_be:1.0.0
+    container_name: sesi_be
+    restart: always
+    command: node app.js
+    volumes:
+      - ./SESI_Backend:/usr/sesi_be
+
+    ports:
+      - "24:3001"
+
+    expose:
+      - "24"
+    
+    depends_on:
+      - database
+
+    networks:
+      - db_be
+  
+  frontend:
+    
+    build:
+      context: ./SESI_Frontend
+      dockerfile: fe.dockerfile
+    
+    image: sesi_fe:1.0.0
+    container_name: sesi_fe
+    restart: always
+
+    volumes:
+      - ./SESI_Frontend:/var/www/html/
+
+    ports:
+      - "8080:8080"
+    
+    environment:
+      - NODE_ENV=development
+    
+    depends_on:
+    - database
+    - backend
+
+networks:
+
+  db_be:
+    driver: bridge

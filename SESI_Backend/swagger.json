@@ -1,0 +1,787 @@
+{
+    "openapi" : "3.0.0",
+    "info" : {
+        "title" : "Sesi",
+        "description" : "Documentação da API criada para uma plataforma do SESI",
+        "version" : "1.0.0"
+    },
+    "basePath" : "/",
+    "paths" : {
+        "/listarMedico" : {
+            "get" : {
+                "description" : "Essa função lista todos os médicos que estão registrado na plataforma.",
+                "tags" : ["Gestor"],
+                "produces" : "application/json",
+                "responses" : {
+                    "201" : {
+                        "description" : "OK"
+                    }
+                }
+            }
+        },
+        "/verGestor/{email}" : {
+            "get" : {
+                "description" : "Essa função lista todas as informações do gestor que é identificado pelo email no campo do 'email'.",
+                "tags" : ["Gestor"],
+                "parameters" : [{
+                    "in" : "path",
+                    "name" : "email",
+                    "required" : "true",
+                    "schema" : {
+                        "type" : "string"
+                    }
+                }],
+                "responses" : {
+                    "200" : {
+                        "description" : "OK"
+                    }
+                }
+            }
+        },
+        "/listar" : {
+            "post" : {
+                "description" : "Essa função lista todas pessoas que exercem o cargo descrito no corpo da requisição.",
+                "tags" : ["Gestor"],
+                "requestBody" : {
+                    "required" : "true",
+                    "content" : {
+                        "application/json" : {
+                            "schema" : {
+                                "type" : "object",
+                                "properties" : {
+                                    "cargo" : {
+                                        "type" : "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses" : {
+
+                }
+            }
+        },
+        "/listarTodos":{
+            "post" : {
+                "description" : "Essa função lista uma pessoa específica, basta informar o cpf e o cargo desse.",
+                "tags" : ["Gestor"],
+                "requestBody" : {
+                    "required" : "true",
+                    "content" : {
+                        "application/json" : {
+                            "schema" : {
+                                "type" : "object",
+                                "properties" : {
+                                    "cargo" : {
+                                        "type" : "string"
+                                    },
+                                    "cpf" : {
+                                        "type" : "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses" : {
+
+                }
+            }
+        },
+        "/listarAtleta": {
+            "post" : {
+                "description" : "Essa função retorna o atleta específico desejado, basta informar o cpf desse.", 
+                "tags" : ["Gestor"],
+                "requestBody" : {
+                    "required" : "true",
+                    "content" : {
+                        "application/json" : {
+                            "schema" :{
+                                "type" : "object",
+                                "properties" : {
+                                    "cpf" : {
+                                        "type" : "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses" : {
+
+                }
+            }
+        },
+        "/cadastro" : {
+            "post" : {
+                "description" : "Essa função é responsável por cadastrar uma pessoa no banco de dados, tendo que informar suas informações.",
+                "tags" : ["Gestor"],
+                "requestBody" : {
+                    "required" : "true",
+                    "content" : {
+                        "application/json" : {
+                            "schema" : {
+                                "type" : "object",
+                                "properties" : {
+                                    "nome" : {
+                                        "type" : "string"
+                                    },
+                                    "cargo" : {
+                                        "type" : "string"
+                                    },
+                                    "cpf" : {
+                                        "type" : "string"
+                                    },
+                                    "email" : {
+                                        "type" : "string"
+                                    },
+                                    "senha" : {
+                                        "type" : "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/deletar" : {
+            "post" : {
+                "description" : "Esse função deleta uma pessoa, tendo que apenas informar o cpf e o cargo desse.",
+                "tags" : ["Gestor"],
+                "requestBody" : {
+                    "required" : "true",
+                    "content" : {
+                        "application/json" : {
+                            "schema" : {
+                                "type" : "object",
+                                "properties" : {
+                                    "cargo" : {
+                                        "type" : "string"
+                                    },
+                                    "cpf" : {
+                                        "type" : "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses" : {
+
+                }
+            }
+        },
+        "/solicitarMedico" : {
+            "post" : {
+                "description" : "Essa função retorna o médico que é desejado. Basta escrever o nome dele.",
+                "tags" : ["Gestor"],
+                "requestBody" : {
+                    "required" : "true",
+                    "content" : {
+                        "application/json" : {
+                            "schema" : {
+                                "type" : "object",
+                                "properties" : {
+                                    "nome" : {
+                                        "type" : "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses" : {
+    
+                }
+            }
+        },
+        "/alterar" : {
+            "put" : {
+                "description" : "Essa função altera a senha de uma pessoa que é informada pelo seu cpf e seu cargo",
+                "tags" : ["Gestor"],
+                "requestBody" : {
+                    "required" : "true",
+                    "content" : {
+                        "application/json" : {
+                            "schema" : {
+                                "type" : "object",
+                                "properties" : {
+                                    "cargo" : {
+                                        "type" : "string"
+                                    },
+                                    "senha" : {
+                                        "type" : "string"
+                                    },
+                                    "cpf" : {
+                                        "type" : "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses" : {
+
+                }
+            }
+        },
+        "/solicitarAtleta" : {
+            "put" : {
+                "description" : "Essa função agenda uma consulta médica entre o atleta, basta informar o id do médico e o cpf do atleta.",
+                "tags" : ["Gestor"],
+                "requestBody" : {
+                    "required" : "true",
+                    "content" : {
+                        "application/json" : {
+                            "schema" : {
+                                "type" : "object",
+                                "properties" : {
+                                    "idmedico" : {
+                                        "type" : "string"
+                                    },
+                                    "cpf" : {
+                                        "type" : "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses" : {
+
+                }
+            }
+        },
+        "/atleta/{email}" : {
+            "get" : {
+                "description" : "Essa função retorna as informações do atleta específico quando o email for passado no campo de parametros.",
+                "tags" : ["Atleta"],
+                "parameters" : [{
+                    "in" : "path",
+                    "name" : "email",
+                    "required" : "true",
+                    "schema" : {
+                        "type" : "string"
+                    }
+                }],
+                "responses" : {
+
+                }
+            }
+        },
+        "/atleta/verExamesSolicitados/{email}" : {
+            "get" : {
+                "description" : "Essa função retorna os exames solicitados para o atleta que tem o email especificado nos parametros.",
+                "tags" : ["Atleta"],
+                "parameters" : [{
+                    "in" : "path",
+                    "name" : "email",
+                    "required" : "true",
+                    "schema" : {
+                        "type" : "string"
+                    }
+                }],
+                "responses" : {
+                    
+                }
+            }
+        },
+        "/atleta/listar" : {
+            "post" : {
+                "description" : "Essa função retorna o nome e cargo do atleta quando seu email for passado no corpo da requisição.",
+                "tags" : ["Atleta"],
+                "requestBody" : {
+                    "required" : "true",
+                    "content" : {
+                        "application/json" : {
+                            "schema" : {
+                                "type" : "object",
+                                "properties" : {
+                                    "email" : {
+                                        "type" : "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses" : {
+
+                }
+            }
+        },
+        "/atleta/atualizarAtleta" : {
+            "put" : {
+                "description" : "Essa função atualiza a senha do atleta, basta informar o email, a senha nova e a senha atual.",
+                "tags" : ["Atleta"],
+                "requestBody" : {
+                    "required" : "true",
+                    "content" : {
+                        "application/json" : {
+                            "schema" : {
+                                "type" : "object",
+                                "properties" : {
+                                    "email" : {
+                                        "type" : "string"
+                                    },
+                                    "senha_nova" : {
+                                        "type" : "string"
+                                    },
+                                    "senha" : {
+                                        "type" : "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/atleta/enviarPdf/{email}" : {
+            "put" : {
+                "description" : "Essa função envia o o resultado do exame solicitado pelo médico, tendo que informar o email do atleta como parametro",
+                "tags" : ["Atleta"],
+                "consumes" : ["multipart/form-data"],
+                "parameters" : [{
+                    "in" : "path",
+                    "name" : "email",
+                    "required" : "true",
+                    "schema" : {
+                        "type" : "string"
+                    }
+                },
+                {
+                    "in" : "formData",
+                    "name" : "pdfatleta",
+                    "required" : "true",
+                    "schema" : {
+                        "type" : "file"
+                    }
+                }
+            ],
+            "responses" : {
+                
+            }
+            }
+        },
+        "/atleta/modificarPdf/{email}" : {
+            "put" : {
+                "description" : "Essa função é responsável por modificar o pdf do atleta, tendo que informar apenas seu email como parâmetro.",
+                "tags" : ["Atleta"],
+                "parameters" : [{
+                    "in" : "path",
+                    "name" : "email",
+                    "required" : "true",
+                    "schema" : {
+                        "type" : "string"
+                    }
+                }],
+                "requestBody" : {
+                    "required" : "true",
+                    "content" : {
+                        "application/json" : {
+                            "schema" : {
+                                "type" : "object",
+                                "properties" : {
+                                    "decisao" : {
+                                        "type" : "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses" : {
+
+                }
+            }
+        },
+        "/login" : {
+            "post" : {
+                "description" : "Essa função é responsável pelo login de todas as pessoas à essa plataforma, tendo que informar o email e a senha",
+                "tags" : ["Login"],
+                "requestBody" : {
+                    "required" : "true",
+                    "content" : {
+                        "application/json" : {
+                            "schema" : {
+                                "type" : "object",
+                                "properties" : {
+                                    "email" : {
+                                        "type" : "string"
+                                    },
+                                    "senha" : {
+                                        "type" : "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses" : {
+
+                }
+            }
+        },
+        "/recuperarSenha/mandarEmail" : {
+            "put" : {
+                "description" : "Essa função é responável por enviar um email ao que foi enviado no corpo da requisição com o código para a recuperação de senha", 
+                "tags" : ["Recuperação de Senha"],
+                "requestBody": {
+                    "required" : "true",
+                    "content" : {
+                        "application/json" : {
+                            "schema" : {
+                                "type" : "object",
+                                "properties" : {
+                                    "email" : {
+                                        "type" : "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses" : {
+
+                }
+            }
+        },
+        "/recuperarSenha/verificarCodigo" : {
+            "put" : {
+                "description" : "Essa função é responsável por verificar se o código é o mesmo que foi enviado para a recuperação de senha",
+                "tags" : ["Recuperação de Senha"],
+                "requestBody" : {
+                    "required" : "true",
+                    "content" : {
+                        "application/json" : {
+                            "schema" : {
+                                "type" : "object",
+                                "properties" : {
+                                    "email" : {
+                                        "type" : "string"
+                                    },
+                                    "senha" : {
+                                        "type" : "string"
+                                    },
+                                    "cargo" : {
+                                        "type" : "string"
+                                    },
+                                    "codigo" : {
+                                        "type" : "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses" : {
+
+                }
+            }
+        },
+        "/medicoConv/verMedicoConv/{email}" : {
+            "get" : {
+                "description" : "",
+                "tags" : ["Médico convidado"],
+                "parameters" : [{
+                    "in" : "path",
+                    "name" : "email",
+                    "required" : "true",
+                    "schema" : {
+                        "type" : "string"
+                    }
+                }],
+                "responses":{
+
+                }
+            }
+        },
+        "/medicoConv/verSolicitacoes/{email}" : {
+            "get" : {
+                "tags" : ["Médico convidado"],
+                "parameters" : [{
+                    "in" : "path",
+                    "name" : "email",
+                    "required" : "true",
+                    "schema" : {
+                        "type" : "string"
+                    }
+                }],
+                "responses" : {
+
+                }
+            }
+        },
+        "/medicoConv/verExames/{idMedConv}" : {
+            "get" : {
+                "tags" : ["Médico convidado"],
+                "parameters" : [{
+                    "in" : "path",
+                    "name" : "idMedConv",
+                    "required" : "true",
+                    "schema" : {
+                        "type" : "integer"
+                    }
+                }],
+                "responses" : {
+
+                }
+            }
+        },
+        "/medicoConv/verAtletas" : {
+            "post" : {
+                "tags" : ["Médico convidado"],
+                "requestBody" : {
+                    "required" : "true",
+                    "content" : {
+                        "application/json" : {
+                            "schema" : {
+                                "type" : "object",
+                                "properties" : {
+                                    "atletas" : {
+                                        "type" : "array",
+                                        "items" : {
+                                            "type" : "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "responses" : {
+
+            }
+        },
+        "/medicoConv/avaliarExames/{idMedConv}" : {
+            "put" : {
+                "tags" : ["Médico convidado"],
+                "parameters" : [{
+                    "in" : "path",
+                    "name" : "idMedConv",
+                    "required" : "true",
+                    "schema" : {
+                        "type" : "integer"
+                    }
+                }],
+                "requestBody" : {
+                    "required" : "true",
+                    "content" : {
+                        "application/json" : {
+                            "schema" : {
+                                "type" : "object",
+                                "properties" : {
+                                    "situacao" : {
+                                        "type" : "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses" : {
+
+                }
+            }
+        },
+        "/medico/verMedico/{email}" : {
+            "get" : {
+                "tags" : ["Médico"],
+                "parameters" : [{
+                    "in" : "path",
+                    "name" : "email",
+                    "required" : "true",
+                    "schema" : {
+                        "type" : "string"
+                    }
+                }],
+                "responses" : {
+
+                }
+            }
+        },
+        "/medico/pending/{id}" : {
+            "get" : {
+                "tags" : ["Médico"],
+                "parameters" : [{
+                    "in" : "path",
+                    "name" : "id",
+                    "required" : "true",
+                    "schema" : {
+                        "type" : "integer"
+                    }
+                }],
+                "responses" : {
+
+                }
+            }
+        },
+        "/medico/recebidas" : {
+            "get" : {
+                "tags" : ["Médico"],
+                "responses" : {
+                
+                }    
+            }
+        },
+        "/medico/solicited/{id}" : {
+            "get" : {
+                "tags" : ["Médico"],
+                "parameters" : [{
+                    "in" : "path",
+                    "name" : "id",
+                    "required" : "true",
+                    "schema" : {
+                        "type" : "integer"
+                    }
+                }],
+                "responses" : {
+
+                }
+            }
+        },
+        "/medico/notSolicited" : {
+            "get" : {
+                "tags" : ["Médico"],
+                "responses" : {
+
+                }
+            }
+        },
+        "/medico/verExameEnviado/{id_atleta}" : {
+            "get" : {
+                "tags" : ["Médico"],
+                "parameters" : [{
+                    "in" : "path",
+                    "name" : "id_atleta",
+                    "required" : "true",
+                    "schema" : {
+                        "type" : "integer"
+                    }
+                }],
+                "responses" : {
+
+                }
+            }
+        },
+        "/medico/nome_medico_cov" : {
+            "post" : {
+                "tags" : ["Médico"],
+                "requestBody" : {
+                    "required" : "true",
+                    "content" : {
+                        "application/json" : {
+                            "schema" : {
+                                "type" : "object",
+                                "properties" : {
+                                    "nome" : {
+                                        "type" : "string"
+                                    },
+                                    "idexame" : {
+                                        "type" : "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses" : {
+
+                }
+            }
+        },
+        "/medico/solicitarExame" : {
+            "post" : {
+                "tags" : ["Médico"],
+                "requestBody" : {
+                    "required" : "true",
+                    "content" : {
+                        "application/json" : {
+                            "schema" : {
+                                "type" : "object",
+                                "properties" : {
+                                    "tipo" : {
+                                        "type" : "string"
+                                    },
+                                    "data_ex" : {
+                                        "type" : "string"
+                                    },
+                                    "id_exame_atl" : {
+                                        "type" : "integer"
+                                    },
+                                    "id_exame_med" : {
+                                        "type" : "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses" : {
+
+                }
+            }
+        },
+        "/medico/att_situacao" : {
+            "put" : {
+                "tags" : ["Médico"],
+                "requestBody" : {
+                    "required" : "true",
+                    "content" : {
+                        "application/json" : {
+                            "schema" : {
+                                "type" : "object",
+                                "properties" : {
+                                    "idatleta" : {
+                                        "type" : "integer"
+                                    },
+                                    "situacao" : {
+                                        "type" : "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses" : {
+                    
+                }
+            }
+        },
+        "/medico/avaliarExame/{idexame}" : {
+            "put" : {
+                "tags" : ["Médico"],
+                "parameters" : [{
+                    "in" : "path",
+                    "name" : "idexame",
+                    "required" : "true",
+                    "schema" : {
+                        "type" : "integer"
+                    }
+                }],
+                "requestBody" : {
+                    "required" : "true",
+                    "content" : {
+                        "application/json" : {
+                            "schema" : {
+                                "type" : "object",
+                                "properties" : {
+                                    "situacao" : {
+                                        "type" : "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses" : {
+                    
+                }
+            }
+        }
+    }   
+}
